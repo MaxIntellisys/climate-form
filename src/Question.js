@@ -3,10 +3,12 @@ import TextField from "@material-ui/core/TextField";
 
 export default function Question({ source, register, errors }) {
   const { question, name } = source;
+  let width = window.innerWidth <= 480 ? "100%" : "50%";
 
   return (
     <>
       <TextField
+        style={{ width, margin: "30px 0" }}
         label={question}
         name={name}
         inputRef={register({
@@ -14,9 +16,7 @@ export default function Question({ source, register, errors }) {
         })}
       />
       {errors[name] && (
-        <p>
-          <small style={{ color: "red" }}>{errors[name].message}</small>
-        </p>
+        <p style={{ color: "red", fontSize: "12px" }}>{errors[name].message}</p>
       )}
       <br />
       <br />
