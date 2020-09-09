@@ -2,10 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FormHeader from "./FormHeader";
 import QuestionsHeader from "./QuestionsHeader";
-import Question from "./MultipleSelection";
+import Question from "./MultiSelectQuestion";
 import Button from "@material-ui/core/Button";
 
-export default function Form({questions, setSubmitted}) {
+export default function Form({ questions, setSubmitted }) {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -21,6 +21,7 @@ export default function Form({questions, setSubmitted}) {
       <FormHeader />
 
       <QuestionsHeader />
+
       {questions.map((source, index) => {
         return (
           <Question
@@ -31,6 +32,7 @@ export default function Form({questions, setSubmitted}) {
           />
         );
       })}
+
       <Button type="submit" variant="outlined" color="primary">
         Send
       </Button>
