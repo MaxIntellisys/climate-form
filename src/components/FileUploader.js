@@ -3,15 +3,14 @@ import React from "react";
 export default function FileUploader({ setQuestions }) {
   const handleChange = async (e) => {
     e.preventDefault();
-    const file = e.target.files[0];
-
-    if (file.type !== "text/csv") return alert("File type must be csv");
+    let file = e.target.files[0];
 
     try {
+      if (file.type !== "text/csv") return alert("File type must be csv");
       const text = await file.text();
 
       let arr = text.replace(/\n/g, ",").split(",");
-      arr = arr.slice(0, arr.length - 1);
+      arr = arr.filter((word) => Boolean(word));
 
       let results = [];
       for (let index in arr) {
