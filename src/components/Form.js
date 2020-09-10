@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import FormHeader from "./FormHeader";
 import QuestionsHeader from "./QuestionsHeader";
 import Question from "./MultiSelectQuestion";
-import Button from "@material-ui/core/Button";
 
 export default function Form({ questions, setSubmitted }) {
   const { register, handleSubmit, errors } = useForm();
@@ -33,9 +32,9 @@ export default function Form({ questions, setSubmitted }) {
         );
       })}
 
-      <Button type="submit" variant="outlined" color="primary">
+      <button className="bg-blue-400 hover:bg-blue-900 text-white font-bold py-2 px-5 rounded-full">
         Send
-      </Button>
+      </button>
     </form>
   );
 }

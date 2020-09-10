@@ -29,9 +29,14 @@ export default function FileUploader({ setQuestions }) {
   };
 
   return (
-    <div className="text-center my-64 p-4 border-solid border-4 border-gray-600 rounded-lg md:w-6/12 m-auto">
-      <p className="text-2xl">Please upload a csv file to generate your form</p>
-      <input type="file" id="fileUpload" onChange={handleChange} />
+    <div className="text-center p-4  m-auto">
+      <h1 className="text-4xl mt-4" >Metrics Circle Form Builder</h1>
+      <div className="text-center my-32 p-4 border-solid border-4 border-gray-600 rounded-lg md:w-6/12 m-auto">
+        <p className="text-2xl">
+          Please upload a csv file to generate your form
+        </p>
+        <input type="file" id="fileUpload" onChange={handleChange} />
+      </div>
     </div>
   );
 }
