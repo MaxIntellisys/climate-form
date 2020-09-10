@@ -6,8 +6,11 @@ export default function FileUploader({ setQuestions }) {
     let file = e.target.files[0];
 
     try {
-      if (file.type !== "text/csv") return alert("File type must be csv");
+      const isValid = file.type === "text/csv" || file.type === "application/vnd.ms-excel"
+      if (!isValid) return alert("File type must be csv");
+      
       const text = await file.text();
+      
 
       let arr = text.replace(/\n/g, ",").split(",");
       arr = arr.filter((word) => Boolean(word));
@@ -16,8 +19,8 @@ export default function FileUploader({ setQuestions }) {
       for (let index in arr) {
         let obj = {};
         if (index > 1 && index % 2 === 0) {
-          obj[arr[0]] = arr[+index];
-          obj[arr[1]] = arr[+index + 1];
+          obj[arr[0].trim()] = arr[+index];
+          obj[arr[1].trim()] = arr[+index + 1];
           results.push(obj);
         }
       }
@@ -35,7 +38,7 @@ export default function FileUploader({ setQuestions }) {
         <p className="text-2xl">
           Please upload a csv file to generate your form
         </p>
-        <input type="file" id="fileUpload" onChange={handleChange} />
+        <input type="file" id="fileUpload" accept=".csv, .ms-excel" onChange={handleChange} />
       </div>
     </div>
   );
