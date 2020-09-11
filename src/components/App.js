@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import ThankYou from "./ThankYou";
 import Form from "./Form";
 import FileUploader from "./FileUploader";
-import { getFormFromDb } from "../firestore";
 
 function App() {
-  const [submitted, setSubmitted] = useState(false);
-  const [questions, setQuestions] = useState(false);  // console.log(getFormFromDb("LonrsZ3hveFW74c8OYwg"));
-  
-  if (submitted) return <ThankYou />;
-
-  // if (questions) {
-  //   return <Form questions={questions} setSubmitted={setSubmitted} />;
-  // }
-
-  return <FileUploader setQuestions={setQuestions} />;
+ 
+  return (
+    <Router>
+      <Route exact path="/" component={FileUploader} />
+      <Route exact path="/form/:id" component={Form} />
+      <Route exact path="/thanks" component={ThankYou} />
+    </Router>
+  );
 }
 
 export default App;

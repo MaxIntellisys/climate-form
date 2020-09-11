@@ -1,8 +1,7 @@
 import React from "react";
 
 const styles= {
-    container: { display: "flex", justifyContent: "space-between" },
-    errors: { color: "red", fontSize: "12px" },
+  errors: { color: "red", fontSize: "12px" },
 }
 
 export default function MultipleSelection({ source, register, errors }) {

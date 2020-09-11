@@ -26,7 +26,7 @@ export async function saveFormToDb(form) {
 export async function getFormFromDb(id) {
   try {
     const doc = await db.collection("forms").doc(id).get();
-    return await doc.data().questions;
+    return doc.data().questions;
   } catch (error) {
     console.error(error.message);
   }
