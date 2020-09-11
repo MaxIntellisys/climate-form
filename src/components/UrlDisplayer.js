@@ -9,7 +9,7 @@ export default function UrlDisplayer({ formURL }) {
         Newly created from is available on this shareable link:
       </p>
       <p>
-        <Link to={`/climate-form${formURL}`}>{`${rootPath}${formURL}`}</Link>
+        <Link to={`${formURL}`}>{`${rootPath}${formURL}`}</Link>
       </p>
     </div>
   );

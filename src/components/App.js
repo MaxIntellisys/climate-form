@@ -5,13 +5,12 @@ import Form from "./Form";
 import FileUploader from "./FileUploader";
 
 function App() {
- 
   return (
     <Router>
-      <Redirect from='/' to='/climate-form' />
-      <Route exact path="/climate-form" component={FileUploader} />
-      <Route exact path="/climate-form/form/:id" component={Form} />
-      <Route exact path="/climate-form/thanks" component={ThankYou} />
+      <Route exact path="/" component={FileUploader} />
+      <Route exact path="/form/:id" component={Form} />
+      <Route exact path="/thanks" component={ThankYou} />
+      <Redirect from="*" to="/" />
     </Router>
   );
 }

@@ -24,7 +24,10 @@ export default function Form({ match, history }) {
   };
 
   useEffect(() => {
-    getQuestions();
+    let isMounted = true
+    if(isMounted) { getQuestions(); }
+    
+    return () => { isMounted = false }
   }, [id]);
 
   return (

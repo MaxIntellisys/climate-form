@@ -30,7 +30,7 @@ export default function FileUploader({ setQuestions }) {
       }
 
       const id = await saveFormToDb({ questions });
-      setFormURL(`/form/${id}`);
+      setFormURL(`form/${id}`);
     } catch (error) {
       console.error(error);
     }
