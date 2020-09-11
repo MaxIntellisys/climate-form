@@ -11,7 +11,7 @@ function App() {
       <Redirect from='/' to='/climate-form' />
       <Route exact path="/climate-form" component={FileUploader} />
       <Route exact path="/climate-form/form/:id" component={Form} />
-      <Route exact path="/thanks" component={ThankYou} />
+      <Route exact path="/climate-form/thanks" component={ThankYou} />
     </Router>
   );
 }
