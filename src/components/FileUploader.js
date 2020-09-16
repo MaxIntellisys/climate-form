@@ -5,7 +5,7 @@ import UrlDisplayer from "./UrlDisplayer";
 export default function FileUploader({ setQuestions }) {
   const [formURL, setFormURL] = useState(false);
 
-  const handleChange = async (e) => {
+  const handleCSV = async (e) => {
     e.preventDefault();
     let file = e.target.files[0];
 
@@ -19,18 +19,21 @@ export default function FileUploader({ setQuestions }) {
       let arr = text.replace(/\n/g, ",").split(",");
       arr = arr.filter((word) => Boolean(word));
 
-      let questions = [];
-      for (let index in arr) {
+      const headers = arr.splice(0, 3);
+      const questions = [];
+      
+      arr.forEach((element) => {
         let obj = {};
-        if (index > 1 && index % 2 === 0) {
-          obj[arr[0].trim()] = arr[+index];
-          obj[arr[1].trim()] = arr[+index + 1];
-          questions.push(obj);
-        }
-      } console.log(questions)
+        let chunk = arr.splice(0, 3);
 
-      // const id = await saveFormToDb({ questions });
-      // setFormURL(`form/${id}`);
+        obj[headers[0].trim()] = chunk[0];
+        obj[headers[1].trim()] = chunk[1];
+        obj[headers[2].trim()] = chunk[2];
+        questions.push(obj);
+      });
+
+      const id = await saveFormToDb({ questions });
+      setFormURL(`form/${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +55,7 @@ export default function FileUploader({ setQuestions }) {
           type="file"
           id="file-upload"
           accept=".csv, .ms-excel"
-          onChange={handleChange}
+          onChange={handleCSV}
         />
         <button
           className="px-4 py-2 bg-yellow-400 rounded pointer m-4 hover:bg-yellow-500 outline-none"

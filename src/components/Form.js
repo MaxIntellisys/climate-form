@@ -37,8 +37,8 @@ export default function Form({ match, history }) {
     <main
       className="min-h-screen"
       style={{
-        background: 'url("/img/blm-2.jpeg") no-repeat center center fixed',
-        backgroundSize: "cover",
+        background: 'url("/img/blm-1.jpeg") no-repeat center center fixed',
+        backgroundSize: "contain",
       }}
     >
       <form

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FormHeader() {
   return (
-    <div className="text-center mb-12 text-yellow-200">
+    <div className="text-center mb-12">
       <h2 className="text-4xl mb-3">Organizational Climate Form</h2>
       <h4 className="text-xl mb-6">
         Ayudanos a conocer tu opinion sobre el clima organizacional en
