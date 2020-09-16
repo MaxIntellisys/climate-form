@@ -27,31 +27,42 @@ export default function FileUploader({ setQuestions }) {
           obj[arr[1].trim()] = arr[+index + 1];
           questions.push(obj);
         }
-      }
+      } console.log(questions)
 
-      const id = await saveFormToDb({ questions });
-      setFormURL(`form/${id}`);
+      // const id = await saveFormToDb({ questions });
+      // setFormURL(`form/${id}`);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleUpload = () => {
+    const fileInput = document.querySelector("#file-upload");
+    fileInput.click();
+  };
+
   return (
-    <div className="text-center p-4  m-auto">
-      <h1 className="text-4xl mt-4">Metrics Circle Form Builder</h1>
-      <div className="text-center my-32 p-4 border-solid border-4 border-gray-600 rounded-lg md:w-6/12 m-auto">
+    <section className="flex flex-col items-center justify-center py-16 bg-orange-100">
+      <div className="flex flex-col items-center w-10/12 lg:w-1/3 bg-orange-200 p-6 mb-5">
         <p className="text-2xl">
           Please upload a csv file to generate your form
         </p>
         <input
+          className="hidden"
           type="file"
-          id="fileUpload"
+          id="file-upload"
           accept=".csv, .ms-excel"
           onChange={handleChange}
         />
+        <button
+          className="px-4 py-2 bg-yellow-400 rounded pointer m-4 hover:bg-yellow-500 outline-none"
+          onClick={handleUpload}
+        >
+          Upload csv
+        </button>
       </div>
 
       {formURL ? <UrlDisplayer formURL={formURL} /> : null}
-    </div>
+    </section>
   );
 }

@@ -6,7 +6,6 @@ import Question from "./MultiSelectQuestion";
 import { getFormFromDb } from "../firestore";
 
 export default function Form({ match, history }) {
-  
   const {
     params: { id },
   } = match;
@@ -15,7 +14,7 @@ export default function Form({ match, history }) {
 
   const onSubmit = (data) => {
     console.log(data);
-    history.push("/thanks")
+    history.push("/thanks");
   };
 
   const getQuestions = async () => {
@@ -24,35 +23,47 @@ export default function Form({ match, history }) {
   };
 
   useEffect(() => {
-    let isMounted = true
-    if(isMounted) { getQuestions(); }
-    
-    return () => { isMounted = false }
+    let isMounted = true;
+    if (isMounted) {
+      getQuestions();
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, [id]);
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-between items-center py-8"
+    <main
+      className="min-h-screen"
+      style={{
+        background: 'url("/img/blm-2.jpeg") no-repeat center center fixed',
+        backgroundSize: "cover",
+      }}
     >
-      <FormHeader />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col justify-between items-center py-8"
+      >
+        <FormHeader />
 
-      <QuestionsHeader />
+        <QuestionsHeader />
 
-      {questions.map((source, index) => {
-        return (
-          <Question
-            source={source}
-            key={index}
-            register={register}
-            errors={errors}
-          />
-        );
-      })}
+        {questions.map((source, index) => {
+          return (
+            <Question
+              source={source}
+              key={index}
+              register={register}
+              errors={errors}
+            />
+          );
+        })}
 
-      <button className="bg-blue-400 hover:bg-blue-900 text-white font-bold py-2 px-5 rounded-full">
-        Send your answers
-      </button>
-    </form>
+        <button className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded-full">
+          Submit
+        </button>
+      </form>
+    </main>
   );
 }

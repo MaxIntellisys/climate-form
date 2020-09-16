@@ -9,7 +9,7 @@ export default function MultipleSelection({ source, register, errors }) {
  
   return (
     <>
-      <div className="flex justify-between bg-gray-200 w-10/12 md:w-6/12 mb-3 p-3" >
+      <div className="flex justify-between bg-yellow-100 w-10/12 md:w-6/12 mb-5 p-3 rounded" >
         <label className="w-6/12">{question}</label>
         <input className="cursor-pointer" type="radio" name={name} value="1" ref={register({ required: "required 🙏🏽" })}/>
         <input className="cursor-pointer" type="radio" name={name} value="2" ref={register({ required: "required 🙏🏽" })}/>
