@@ -9,14 +9,14 @@ steps:
       - --keyring=form-builder
       - --key=cloudbuild-env
   # Install
-  - name: "gcr.io/cloud-builders/yarn"
-    args: ["install", "--ignore-engines"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
   # Test
   # - name: 'gcr.io/cloud-builders/yarn'
   #   args: ['test']
   # Build
-  - name: "gcr.io/cloud-builders/yarn"
-    args: ["build"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
   # Deploy
-  - name: "gcr.io/cloud-builders/yarn"
-    args: ["deploy:ci"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "deploy:ci"]
