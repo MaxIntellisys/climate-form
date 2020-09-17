@@ -1,13 +1,22 @@
 steps:
-# Install
-- name: 'gcr.io/cloud-builders/yarn'
-  args: ['install', '--ignore-engines']
-# Test
-# - name: 'gcr.io/cloud-builders/yarn'
-#   args: ['test']
-# Build
-- name: 'gcr.io/cloud-builders/yarn'
-  args: ['build']
-# Deploy
-- name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy']
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - kms
+      - decrypt
+      - --ciphertext-file=.env.enc
+      - --plaintext-file=.env.local
+      - --location=global
+      - --keyring=form-builder
+      - --key=cloudbuild-env
+  # Install
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["install", "--ignore-engines"]
+  # Test
+  # - name: 'gcr.io/cloud-builders/yarn'
+  #   args: ['test']
+  # Build
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["build"]
+  # Deploy
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ["deploy:ci"]
