@@ -11,6 +11,9 @@ steps:
   # Install
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+  # Install firebase-tools
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install", "-g", "firebase-tools"]
   # Test
   # - name: 'gcr.io/cloud-builders/yarn'
   #   args: ['test']
